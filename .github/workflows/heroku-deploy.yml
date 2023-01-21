@@ -11,7 +11,7 @@ jobs:
       - name: Run tests
         run: docker build . -t node_app && docker run node_app npm run test
       - name: Build
-        run: docker build . -t node_app && npm i && run build
+        run: npm i && npm run build
       - name: Login to Heroku Container registry
         env: 
           heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
