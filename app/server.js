@@ -6,8 +6,8 @@ app.get("/health", (req, res) => {
     res.send("ok")
 });
 
-app.listen(4000, () => {
-  console.log("Running on 4000");
+app.listen(5000, () => {
+  console.log("Running on 5000");
 });
 
 export { app };

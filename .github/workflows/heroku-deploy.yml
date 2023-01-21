@@ -1,9 +1,6 @@
 name: Tests and Deploy on Heroku
 
-on:
-  push:
-    branches:
-      - main
+on: [pull_request]
 
 jobs:
   HerokuDeploy:
@@ -16,4 +13,7 @@ jobs:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: ${{secrets.HEROKU_APP_NAME}}
           heroku_email: ${{secrets.HEROKU_EMAIL}}
-          branch: "main"
+      - name: Run tests
+        run: docker run node_app npm run test
+      - name: Build
+        run: npm i && run build

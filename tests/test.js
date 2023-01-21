@@ -1,6 +1,6 @@
-const supertest = require("supertest");
-const httpStatus = require("http-status");
-const app = require("../app/server");
+import supertest from "supertest";
+import httpStatus from "http-status";
+import { app } from "../app/server";
 
 const server = supertest(app);
 
