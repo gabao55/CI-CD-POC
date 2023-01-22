@@ -3,17 +3,12 @@ name: Tests and Deploy on Heroku
 on: [pull_request]
 
 jobs:
-  PullRequest:
+  HerokuDeploy:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
         uses: actions/checkout@v3
-      - uses: akhileshns/heroku-deploy@v3.12.12
-        with:
-          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: ${{secrets.HEROKU_APP_NAME}}
-          heroku_email: ${{secrets.HEROKU_EMAIL}}
       - name: Run tests
-        run: docker run node_app npm run test
+        run: docker build . -t node_app && docker run node_app npm run test
       - name: Build
-        run: npm i && run build
+        run: npm i && npm run build

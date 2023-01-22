@@ -5,13 +5,16 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
+    "build": "docker build . -t node_app",
     "start": "node app/server",
-    "test": "NODE_OPTIONS=--experimental-vm-modules jest --passWithNoTests --runInBand --detectOpenHandles"
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest  --passWithNoTests --runInBand --forceExit"
   },
   "jest": {
     "transform": {
       "^.+\\.jsx?$": "babel-jest"
-    }
+    },
+    "bail": true,
+    "testEnvironment": "node"
   },
   "author": "",
   "license": "ISC",
